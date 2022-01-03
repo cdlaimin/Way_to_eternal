@@ -119,9 +119,7 @@ class Archive:
 
 def update_announcement():
     print('\033[1;35m--------------更新公告--------------\033[0m')
-    print('版本:5w-2d1a')
-    print('-- 注意！新版本/w改为/f,战斗过程中使用/r逃跑')
-    print('-- 添加了提示')
+    print('版本:5.1.3')
     print('-- 修复了诸多bug')
     print('-- 没了')
 
@@ -163,12 +161,12 @@ def operation():  # 帮助文档
     print('输入/help <物品名>可以查看数据')
 
 
-def weather(velocityOfFlow):
+def weather(velocity_of_flow):
     global w_time
     rain = False
     windy = False
     while 1:
-        time.sleep(int(velocityOfFlow))
+        time.sleep(int(velocity_of_flow))
         w_time = w_time + 1
         if w_time == 50:
             print('\n \033[1;33m红红的太阳慢慢地从山尖上冒了出来，不一会儿，朝霞就洒满了大地。 \n')
@@ -201,19 +199,16 @@ def weather(velocityOfFlow):
             windy = True
         if windy:
             windy_s = random.randint(0, 5000)
-            if 300 < windy <= 400:
+            if 300 < windy_s <= 400:
                 print('风逐渐变小了，一切归于宁静')
             else:
                 pass
 
 
-Buffer_LV = LV
-
 
 def pc():  # 个人界面
     global fun
-    for i in range(0, random.randint(1, random.randint(2, 8))):
-        fun = random.randint(0, 100)
+    fun = random.randint(0, 100)
     global HP
     global HV
     global EXP
@@ -279,8 +274,7 @@ def pc():  # 个人界面
 
 def woods_low_level(name):
     global fun
-    for i in range(0, random.randint(1, random.randint(2, 8))):
-        fun = random.randint(0, 100)
+    fun = random.randint(0, 100)
     global HP
     global EXP
     global AT
@@ -309,11 +303,9 @@ def woods_low_level(name):
             mh = 1000
         elif 10 > LV > 5:
             print('你已经不适合在这种小地方呆着了，出去闯荡吧')
-            ml = 0
             return 1
         else:
             print('宁搁这儿玩儿呢？')
-            ml = 0
             return 1
     else:
         print('这儿似乎没有什么可以让你打的')
@@ -819,7 +811,7 @@ def cedn():  # 总检测
         save.save_Archive()
         print('存档完毕，可退出')
     if in1 == '/rf':
-        rf = Archive('霖', '20080826')
+        rf = Archive(name, password)
         rf.read_Archive()
         print('读档成功')
     if '/go ' in in1:

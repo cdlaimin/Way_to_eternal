@@ -16,6 +16,7 @@ EXP_MAX = 5  # 所需经验
 BAG = 10  # 背包总量（kg
 BAG_Used = 0  # 目前已用
 LV = 1  # 等级
+Buffer_LV = LV
 coin = 0  # 钱
 realm = '凡人'
 realm_LV = 1
