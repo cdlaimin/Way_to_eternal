@@ -237,7 +237,7 @@ def pc():  # 个人界面
         HP = HP
     print('\033[1;33m【气血】' + str(HP) + '/' + str(HP_MAX))
     print('【护甲】' + str(DF))
-    AT = int(AT * (1 + (LV / 5))) + int(ETLY[hand][0])
+    AT = int(1 + (LV / 5)) + int(ETLY[hand][0])
     print('【功力】' + str(AT))
     print('【饥饿】' + str(HV) + '/' + str(HV_MAX))
     if BAG_List_Buffer != BAG_List:
@@ -543,6 +543,9 @@ def use_things(name):
         elif HV + FDLB[name][0] >= HV_MAX:
             HV = HV_MAX
             print('\033[1;33m你的肚子被填饱了\033[0m')
+        for k in list(BAG_List.keys()):
+            if not BAG_List[k]:
+                BAG_List.pop(k)
     elif name in list(ETLY.keys()) and name in list(BAG_List.keys()) and int(BAG_List[name]) >= 1:
         BAG_List[name] = int(BAG_List[name]) - 1
         if ETLY[name][1] == 'head':
@@ -565,7 +568,9 @@ def use_things(name):
             hand = name
             AT = int(ETLY[hand][0])  # 攻击
             print('你装备了' + str(name))
-
+        for k in list(BAG_List.keys()):
+            if not BAG_List[k]:
+                BAG_List.pop(k)
     else:
         print('你没有介玩意儿！')
 
